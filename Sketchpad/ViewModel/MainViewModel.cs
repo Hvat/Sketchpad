@@ -40,8 +40,8 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
-    async Task Tap(string s)
+    async Task Tap()
     {
-        await Shell.Current.GoToAsync($"{nameof(NotesPage)}?Text={s}");
+        await Shell.Current.GoToAsync(nameof(NotesPage));
     }
 }

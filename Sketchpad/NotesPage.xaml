@@ -6,9 +6,9 @@
              x:DataType="viewmodel:NotesViewModel"
              Title="Заметки">
     <VerticalStackLayout>
-        <Label 
-            Text="{Binding Text}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Editor Placeholder="Введите текст"
+            AutoSize="TextChanges"
+            MaxLength="500"
+            HeightRequest="450" />
     </VerticalStackLayout>
 </ContentPage>
