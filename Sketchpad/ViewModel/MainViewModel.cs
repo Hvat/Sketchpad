@@ -26,7 +26,7 @@ public partial class MainViewModel : ObservableObject
             return;
 
         Items.Add(Text);
-        // add our item
+
         Text = string.Empty;
     }
 

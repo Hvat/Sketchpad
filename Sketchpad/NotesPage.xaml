@@ -5,10 +5,12 @@
              xmlns:viewmodel="clr-namespace:Sketchpad.ViewModel"
              x:DataType="viewmodel:NotesViewModel"
              Title="Заметки">
+    
+    
     <VerticalStackLayout>
         <Editor Placeholder="Введите текст"
             AutoSize="TextChanges"
-            MaxLength="500"
+            MaxLength="1000"
             HeightRequest="450" />
     </VerticalStackLayout>
 </ContentPage>
