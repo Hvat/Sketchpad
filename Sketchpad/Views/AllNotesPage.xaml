@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Sketchpad.ViewModels"
              x:Class="Sketchpad.Views.AllNotesPage"
-             Title="Your Notes">
+             Title="Your Notes"
+             NavigatedTo="ContentPage_NavigatedTo">
+
+    <ContentPage.BindingContext>
+        <viewModels:NotesViewModel />
+    </ContentPage.BindingContext>
 
     <!-- Добавить элемент на панель инструментов -->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
+        <ToolbarItem Text="Add" Command="{Binding NewCommand}" IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
     </ContentPage.ToolbarItems>
 
     <!-- Отображение заметок в списке -->
     <CollectionView x:Name="notesCollection"
-                        ItemsSource="{Binding Notes}"
-                        Margin="20"
-                        SelectionMode="Single"
-                        SelectionChanged="NotesCollection_SelectionChanged">
+                    ItemsSource="{Binding AllNotes}"
+                    Margin="20"
+                    SelectionMode="Single"
+                    SelectionChangedCommand="{Binding SelectNoteCommand}"
+                    SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
 
         <!-- Обозначьте, как выложена коллекция элементов -->
         <CollectionView.ItemsLayout>
