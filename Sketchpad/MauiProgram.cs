@@ -1,4 +1,7 @@
-﻿namespace Sketchpad;
+﻿using Sketchpad.ViewModels;
+using Sketchpad.Views;
+
+namespace Sketchpad;
 
 public static class MauiProgram
 {
@@ -12,6 +15,12 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
+
+        builder.Services.AddSingleton<AllNotesPage>();
+        builder.Services.AddSingleton<NotesViewModel>();
+
+        builder.Services.AddTransient<NotePage>();
+        builder.Services.AddTransient<NoteViewModel>();
 
         return builder.Build();
     }
