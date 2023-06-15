@@ -1,16 +1,16 @@
 ﻿namespace Sketchpad.Models;
 
-internal class Note
+public class Note
 {
     public string Filename { get; set; }
     public string Text { get; set; }
     public DateTime Date { get; set; }
 
     public void Save() =>
-       File.WriteAllText(System.IO.Path.Combine(FileSystem.AppDataDirectory, Filename), Text);
+       File.WriteAllText(Path.Combine(FileSystem.AppDataDirectory, Filename), Text);
 
     public void Delete() =>
-        File.Delete(System.IO.Path.Combine(FileSystem.AppDataDirectory, Filename));
+        File.Delete(Path.Combine(FileSystem.AppDataDirectory, Filename));
 
     public Note()
     {
@@ -21,7 +21,7 @@ internal class Note
 
     public static Note Load(string filename)
     {
-        filename = System.IO.Path.Combine(FileSystem.AppDataDirectory, filename);
+        filename = Path.Combine(FileSystem.AppDataDirectory, filename);
 
         if (!File.Exists(filename))
             throw new FileNotFoundException("Не удалось найти файл в локальном хранилище.", filename);

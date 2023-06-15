@@ -1,14 +1,13 @@
+using Sketchpad.ViewModels;
+
 namespace Sketchpad.Views;
 
 public partial class AllNotesPage : ContentPage
 {
-    public AllNotesPage()
+    public AllNotesPage(NotesViewModel vm)
     {
         InitializeComponent();
-    }
 
-    private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
-    {
-        notesCollection.SelectedItem = null;
+        BindingContext = vm;
     }
 }

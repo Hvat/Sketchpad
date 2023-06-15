@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace Sketchpad.ViewModels;
 
-internal class NoteViewModel : ObservableObject, IQueryAttributable
+public partial class NoteViewModel : ObservableObject, IQueryAttributable
 {
     private Models.Note _note;
 

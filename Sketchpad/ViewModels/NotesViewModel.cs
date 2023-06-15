@@ -5,7 +5,7 @@ using Sketchpad.Models;
 
 namespace Sketchpad.ViewModels;
 
-internal class NotesViewModel : IQueryAttributable
+public partial class NotesViewModel : IQueryAttributable
 {
     public ObservableCollection<NoteViewModel> AllNotes { get; }
     public ICommand NewCommand { get; }
@@ -13,7 +13,7 @@ internal class NotesViewModel : IQueryAttributable
 
     public NotesViewModel()
     {
-        AllNotes = new ObservableCollection<NoteViewModel>(Models.Note.LoadAll().Select(n => new NoteViewModel(n)));
+        AllNotes = new ObservableCollection<NoteViewModel>(Note.LoadAll().Select(n => new NoteViewModel(n)));
         NewCommand = new AsyncRelayCommand(NewNoteAsync);
         SelectNoteCommand = new AsyncRelayCommand<NoteViewModel>(SelectNoteAsync);
     }
@@ -23,7 +23,7 @@ internal class NotesViewModel : IQueryAttributable
         await Shell.Current.GoToAsync(nameof(Views.NotePage));
     }
 
-    private async Task SelectNoteAsync(ViewModels.NoteViewModel note)
+    private async Task SelectNoteAsync(NoteViewModel note)
     {
         if (note != null)
             await Shell.Current.GoToAsync($"{nameof(Views.NotePage)}?load={note.Identifier}");
