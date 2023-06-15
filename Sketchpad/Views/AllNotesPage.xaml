@@ -37,7 +37,7 @@
                                            LineBreakMode="TailTruncation"
                                            MaxLines="1"/>
                                     <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:NoteViewModel}}, Path=Date}"
-                                           FontSize="14" TextColor="Silver"/>
+                                           FontSize="14" TextColor="#808080"/>
                                 </StackLayout>
                             </Frame>
                         </Grid>
